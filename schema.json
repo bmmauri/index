@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "definitions": {
+    "section": {
+      "type": "object",
+      "properties": {
+        "title": {"type": ["string", "null"]},
+        "description": {"type": ["string", "null"]},
+        "sections": {
+          "type": ["array", "null"],
+          "items": [{"$ref": "#/definitions/section" }]
+        },
+        "content": {
+          "anyOf": [
+            {"$ref": "#/definitions/note"},
+            {"$ref": "#/definitions/object"},
+            {"type": "null"}
+          ]
+        }
+      },
+      "required": ["title", "description", "sections", "content"]
+    },
+    "note": {
+      "type": "object",
+      "properties": {
+        "content": {"type": ["string", "null"]},
+        "notes": {
+          "type": ["array", "null"],
+          "items": [{"$ref": "#/definitions/note" }]
+        }
+      },
+      "required": ["content", "notes"]
+    },
+    "object": {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string"},
+        "description": {"type": ["string", "null"]},
+        "content": {
+          "type": ["array", "null"],
+          "items": [{"$ref": "#/definitions/note" }]
+        }
+      },
+      "required": ["name", "description", "content"]
+    }
+  },
+  "properties": {
+    "title": {"type": "string"},
+    "project": {"type": "string"},
+    "objects": {
+      "type": ["array", "null"],
+      "items": [{"$ref": "#/definitions/object"}]
+    },
+    "notes": {
+      "type": ["array", "null"],
+      "items": [{"$ref": "#/definitions/note"}]
+    },
+    "sections": {
+      "type": ["array", "null"],
+      "items": [{"$ref": "#/definitions/section" }]
+    },
+    "index": {
+      "type": ["array", "null"],
+      "items": [{"$ref": "#/definitions/section" }]
+    }
+  },
+  "required": [
+    "title", "project", "description", "sections", "objects", "notes", "index"
+  ]
+}

@@ -1,0 +1,161 @@
+title: Chess Planning
+project: Manual
+description: |
+  A collection of any notes and exercise to improve your chess skills.
+
+notes:
+  - &EndgameNote
+    content: |
+      during the endgame every pieces begin more powerfull then the middlegame
+    notes: null
+  - &KingNote
+    content: null
+    notes: null
+  - &QueenNote
+    content: null
+    notes: null
+  - &RockNote
+    content: null
+    notes: null
+  - &KnightNote
+    content: null
+    notes: null
+  - &BishopNote
+    content: null
+    notes: null
+  - &PawnNote
+    content: null
+    notes: null
+
+objects:
+  - &KingObject
+    name: King
+    description: null
+    content:
+      - *KingNote
+  - &QueenObject
+    name: Queen
+    description: null
+    content:
+      - *QueenNote
+  - &RockObject
+    name: Rock
+    description: null
+    content:
+      - *RockNote
+  - &KnightObject
+    name: Knight
+    description: null
+    content:
+      - *KnightNote
+  - &BishopObject
+    name: Bishop
+    description: null
+    content:
+      - *BishopNote
+  - &PawnObject
+    name: Pawn
+    description: null
+    content:
+      - *PawnNote
+
+sections:
+
+  # fights
+  - &QueenVsBishopSection
+    title: queen vs bishop
+    description: null
+    sections: null
+    content: null
+  - &QueenVsKnightSection
+    title: queen vs knight
+    description: null
+    sections: null
+    content: null
+  - &QueenVsRockSection
+    title: queen vs rock
+    description: null
+    sections: null
+    content: null
+  - &QueenVsMinorSection
+    title: queen vs minor piece
+    description: null
+    sections:
+      - *QueenVsKnightSection
+      - *QueenVsBishopSection
+    content: null
+  - &RockVsKnightSection
+    title: rock vs knight
+    description: null
+    sections: null
+    content: null
+  - &RockVsBishopSection
+    title: rock vs bishop
+    description: null
+    sections: null
+    content: null
+
+  # mates
+  - &MateQueenOnlySection
+    title: mate with queen
+    description: null
+    sections: null
+    content: null
+  - &MateRockOnlySection
+    title: mate with rock
+    description: null
+    sections: null
+    content: null
+  - &Mate2BishopsSection
+    title: mate with two bishops
+    description: null
+    sections: null
+    content: null
+  - &MateKnightBishopSection
+    title: mate with knight and bishop
+    description: null
+    sections: null
+    content: null
+  - &Mate2KnightsSection
+    title: mate with 2 knights
+    description: null
+    sections: null
+    content: null
+
+  # chapter
+  - &IntroductionSection
+    title: introduction
+    description: null
+    sections: null
+    content: null
+  - &PiecesCapacitySection
+    title: pieces capacity
+    description: capacity of the pieces
+    sections: null
+    content:
+      - *KingObject
+      - *QueenObject
+      - *RockObject
+      - *KnightObject
+      - *BishopObject
+      - *PawnObject
+  - &CheckmateKingOnlySection
+    title: checkmate to king only
+    description: how to checkmate the king only with the pieces
+    sections:
+      - *MateQueenOnlySection
+      - *MateRockOnlySection
+      - *Mate2BishopsSection
+      - *MateKnightBishopSection
+      - *Mate2KnightsSection
+    content: null
+  - &PiecesFightSection
+    title: pieces fight
+    description: null
+    sections:
+    content: null
+index:
+  - *IntroductionSection
+  - *PiecesCapacitySection
+  - *CheckmateKingOnlySection
+
