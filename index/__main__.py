@@ -4,6 +4,7 @@ import jsonschema
 import os
 import yaml
 
+from index import core
 
 parse = argparse.ArgumentParser(description="Manual chess plan")
 parse.add_argument("schema", help="JSON schema")
@@ -16,4 +17,9 @@ if not os.path.isfile(args.schema) or not os.path.isfile(args.document):
 _SCHEMA = json.load(open(args.schema))
 _DOCUMENT = yaml.safe_load(open(args.document))
 
+# validation
 jsonschema.validate(_DOCUMENT, _SCHEMA)
+
+# index
+document = core.Index(document=_DOCUMENT)
+

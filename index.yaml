@@ -5,26 +5,26 @@ description: |
 
 notes:
   - &EndgameNote
-    content: |
+    text: |
       during the endgame every pieces begin more powerfull then the middlegame
     notes: null
   - &KingNote
-    content: null
+    text: moves only in the rounded squares
     notes: null
   - &QueenNote
-    content: null
+    text: has to be the line free, it can control a lot of squares
     notes: null
   - &RockNote
-    content: null
+    text: has to be the columns and raw free to attack the pieces
     notes: null
   - &KnightNote
-    content: null
+    text: can jump over other pieces, so it is powerful in open position
     notes: null
   - &BishopNote
-    content: null
+    text: has to be the diagonals free to attack the pieces
     notes: null
   - &PawnNote
-    content: null
+    text: null
     notes: null
 
 objects:
@@ -78,7 +78,7 @@ sections:
     sections: null
     content: null
   - &QueenVsMinorSection
-    title: queen vs minor piece
+    title: queen vs minor pieces
     description: null
     sections:
       - *QueenVsKnightSection
@@ -94,6 +94,7 @@ sections:
     description: null
     sections: null
     content: null
+
 
   # mates
   - &MateQueenOnlySection
@@ -153,9 +154,39 @@ sections:
     title: pieces fight
     description: null
     sections:
+      - *QueenVsRockSection
+      - *QueenVsMinorSection
+      - *RockVsBishopSection
+      - *RockVsKnightSection
     content: null
+
 index:
   - *IntroductionSection
   - *PiecesCapacitySection
   - *CheckmateKingOnlySection
+  - *PiecesFightSection
+
+trainings:
+  - &EndgameTraining
+    title: endgame training
+    description: improve endgame skill with every pieces
+    sections:
+      - *CheckmateKingOnlySection
+      - *PiecesFightSection
+    content: null
+
+plans:
+  - &EndgamePlan
+    name: EndgamePlan
+    description: learn how to finish chess games
+    objective: improve endgame skills
+    type: every 2 weeks
+    due: 01-09-2020
+    exam: true
+    sections:
+      - *EndgameTraining
+    content: null
+
+plan:
+  *EndgamePlan
 

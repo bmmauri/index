@@ -2,6 +2,32 @@
   "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "definitions": {
+    "plan": {
+      "type": "object",
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "description": {"type": ["string", "null"]},
+        "objective": {"type": ["string", "null"]},
+        "due": {"type": ["string", "null"]},
+        "type": {"type": ["string", "null"]},
+        "exam": {"type": ["boolean", "null"]},
+        "sections": {
+          "type": ["array", "null"],
+          "items": [{"$ref": "#/definitions/section" }]
+        },
+        "content": {
+          "oneOf": [
+            {"$ref": "#/definitions/note"},
+            {"$ref": "#/definitions/object"},
+            {"type": "null"}
+          ]
+        }
+      },
+      "required": [
+        "name", "description", "objective", "due", "type",
+        "sections", "content", "exam"
+      ]
+    },
     "section": {
       "type": "object",
       "properties": {
@@ -12,7 +38,7 @@
           "items": [{"$ref": "#/definitions/section" }]
         },
         "content": {
-          "anyOf": [
+          "oneOf": [
             {"$ref": "#/definitions/note"},
             {"$ref": "#/definitions/object"},
             {"type": "null"}
@@ -24,13 +50,13 @@
     "note": {
       "type": "object",
       "properties": {
-        "content": {"type": ["string", "null"]},
+        "text": {"type": ["string", "null"]},
         "notes": {
           "type": ["array", "null"],
           "items": [{"$ref": "#/definitions/note" }]
         }
       },
-      "required": ["content", "notes"]
+      "required": ["text", "notes"]
     },
     "object": {
       "type": "object",
@@ -63,9 +89,18 @@
     "index": {
       "type": ["array", "null"],
       "items": [{"$ref": "#/definitions/section" }]
+    },
+    "trainings": {
+      "type": ["array", "null"],
+      "items": [{"$ref": "#/definitions/section" }]
+    },
+    "plan": {
+      "$ref": "#/definitions/plan"
     }
   },
   "required": [
-    "title", "project", "description", "sections", "objects", "notes", "index"
+    "title", "project", "description", "sections",
+    "objects", "notes", "index", "trainings",
+    "plan"
   ]
 }
