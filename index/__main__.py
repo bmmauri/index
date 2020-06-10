@@ -22,4 +22,4 @@ jsonschema.validate(_DOCUMENT, _SCHEMA)
 
 # index
 document = core.Index(document=_DOCUMENT)
-
+print(document.get_exercise_training())

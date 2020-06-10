@@ -1,5 +1,6 @@
 """Module that expose the document Index object.
 """
+import random
 
 
 class Document(object):
@@ -31,6 +32,12 @@ class Index(Document):
                 _list = self.get_list(_, key, _list)
         return _list
 
+    def get_exercise_training(self):
+        result = []
+        for k, v in self.sections.items():
+            result.extend(v)
+        return random.choice(result)
+
     @classmethod
     def _is_note(cls, e: dict) -> bool:
         return 'notes' in e
@@ -54,10 +61,12 @@ class Index(Document):
 
     @property
     def sections(self):
+        section_map = {}
         sections = []
         for e in self.plan.get('sections'):
             sections = self.get_list(e, "sections", sections)
-        return sections
+            section_map.__setitem__(e.get('title'), sections)
+        return section_map
 
     @property
     def objects(self):
