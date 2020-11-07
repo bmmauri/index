@@ -27,7 +27,7 @@ def start(update: Update, context):
 
 def get_training_exercise(update: Update, context):
     index: core.Index = context.bot.get_index()
-    exercise = index.get_exercise_training()
+    exercise = index.get_exercise_training(queen)
     update.message.reply_text(f"EXERCISE: {exercise}")
 
 
@@ -43,7 +43,6 @@ class ChessBot(telegram.Bot):
 
 
 if __name__ == '__main__':
-
     _DOCUMENT = yaml.safe_load(open('index.yaml'))
     updater = Updater(
         use_context=True,
@@ -54,4 +53,3 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("get_training_exercise", get_training_exercise))
     updater.start_polling()
     updater.idle()
-

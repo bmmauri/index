@@ -80,6 +80,7 @@ sections:
   - &QueenVsMinorSection
     title: queen vs minor pieces
     description: null
+    root: true
     sections:
       - *QueenVsKnightSection
       - *QueenVsBishopSection
@@ -91,6 +92,27 @@ sections:
     content: null
   - &RockVsBishopSection
     title: rock vs bishop
+    description: null
+    sections: null
+    content: null
+
+  - &QueenVsPawnSection
+    title: queen vs pawn
+    description: null
+    sections: null
+    content: null
+  - &RockVsPawnSection
+    title: rock vs pawn
+    description: null
+    sections: null
+    content: null
+  - &KnightVsPawnSection
+    title: knight vs pawn
+    description: null
+    sections: null
+    content: null
+  - &BishopVsPawnSection
+    title: bishop vs pawn
     description: null
     sections: null
     content: null
@@ -143,6 +165,7 @@ sections:
   - &CheckmateKingOnlySection
     title: checkmate to king only
     description: how to checkmate the king only with the pieces
+    root: true
     sections:
       - *MateQueenOnlySection
       - *MateRockOnlySection
@@ -153,6 +176,7 @@ sections:
   - &PiecesFightSection
     title: pieces fight
     description: null
+    root: true
     sections:
       - *QueenVsRockSection
       - *QueenVsMinorSection
@@ -160,19 +184,33 @@ sections:
       - *RockVsKnightSection
     content: null
 
+  - &PiecesFightPawnSection
+    title: pieces fight versus pawn
+    description: null
+    root: true
+    sections:
+      - *QueenVsPawnSection
+      - *RockVsPawnSection
+      - *KnightVsPawnSection
+      - *BishopVsPawnSection
+    content: null
+
 index:
   - *IntroductionSection
   - *PiecesCapacitySection
   - *CheckmateKingOnlySection
   - *PiecesFightSection
+  - *PiecesFightPawnSection
 
 trainings:
   - &EndgameTraining
     title: endgame training
+    root: true
     description: improve endgame skill with every pieces
     sections:
       - *CheckmateKingOnlySection
       - *PiecesFightSection
+      - *PiecesFightPawnSection
     content: null
 
 plans:

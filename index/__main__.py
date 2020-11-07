@@ -16,10 +16,18 @@ if not os.path.isfile(args.schema) or not os.path.isfile(args.document):
 
 _SCHEMA = json.load(open(args.schema))
 _DOCUMENT = yaml.safe_load(open(args.document))
+DIR = lambda dirname: os.makedirs(os.path.join(os.getcwd(), dirname)) if not os.path.isdir(dirname) else None
 
 # validation
 jsonschema.validate(_DOCUMENT, _SCHEMA)
 
 # index
 document = core.Index(document=_DOCUMENT)
-print(document.get_exercise_training())
+
+print("######" * 5)
+print("EXERCISES CHESS TRAINING")
+print("######" * 5)
+_list_exercises = document.exercise_list
+print("\n".join(_list_exercises))
+document.dump_txt()
+DIR(dirname="trainings")
