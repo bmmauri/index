@@ -5,102 +5,265 @@
     "plan": {
       "type": "object",
       "properties": {
-        "name": {"type": ["string", "null"]},
-        "description": {"type": ["string", "null"]},
-        "objective": {"type": ["string", "null"]},
-        "due": {"type": ["string", "null"]},
-        "type": {"type": ["string", "null"]},
-        "exam": {"type": ["boolean", "null"]},
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "objective": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "due": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "exam": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
         "sections": {
-          "type": ["array", "null"],
-          "items": [{"$ref": "#/definitions/section" }]
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": [
+            {
+              "$ref": "#/definitions/section"
+            }
+          ]
         },
         "content": {
           "oneOf": [
-            {"$ref": "#/definitions/note"},
-            {"$ref": "#/definitions/object"},
-            {"type": "null"}
+            {
+              "$ref": "#/definitions/note"
+            },
+            {
+              "$ref": "#/definitions/object"
+            },
+            {
+              "type": "null"
+            }
           ]
         }
       },
       "required": [
-        "name", "description", "objective", "due", "type",
-        "sections", "content", "exam"
+        "name",
+        "description",
+        "objective",
+        "due",
+        "type",
+        "sections",
+        "content",
+        "exam"
       ]
     },
     "section": {
       "type": "object",
       "properties": {
-        "title": {"type": ["string", "null"]},
-        "description": {"type": ["string", "null"]},
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "sections": {
-          "type": ["array", "null"],
-          "items": [{"$ref": "#/definitions/section" }]
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": [
+            {
+              "$ref": "#/definitions/section"
+            }
+          ]
         },
         "content": {
           "oneOf": [
-            {"$ref": "#/definitions/note"},
-            {"$ref": "#/definitions/object"},
-            {"type": "null"}
+            {
+              "$ref": "#/definitions/note"
+            },
+            {
+              "$ref": "#/definitions/object"
+            },
+            {
+              "type": "null"
+            }
           ]
         }
       },
-      "required": ["title", "description", "sections", "content"]
+      "required": [
+        "title",
+        "description",
+        "sections",
+        "content"
+      ]
     },
     "note": {
       "type": "object",
       "properties": {
-        "text": {"type": ["string", "null"]},
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "notes": {
-          "type": ["array", "null"],
-          "items": [{"$ref": "#/definitions/note" }]
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": [
+            {
+              "$ref": "#/definitions/note"
+            }
+          ]
         }
       },
-      "required": ["text", "notes"]
+      "required": [
+        "text",
+        "notes"
+      ]
     },
     "object": {
       "type": "object",
       "properties": {
-        "name": {"type": "string"},
-        "description": {"type": ["string", "null"]},
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "content": {
-          "type": ["array", "null"],
-          "items": [{"$ref": "#/definitions/note" }]
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": [
+            {
+              "$ref": "#/definitions/note"
+            }
+          ]
         }
       },
-      "required": ["name", "description", "content"]
+      "required": [
+        "name",
+        "description",
+        "content"
+      ]
     }
   },
   "properties": {
-    "title": {"type": "string"},
-    "project": {"type": "string"},
+    "title": {
+      "type": "string"
+    },
+    "project": {
+      "type": "string"
+    },
     "objects": {
-      "type": ["array", "null"],
-      "items": [{"$ref": "#/definitions/object"}]
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": [
+        {
+          "$ref": "#/definitions/object"
+        }
+      ]
     },
     "notes": {
-      "type": ["array", "null"],
-      "items": [{"$ref": "#/definitions/note"}]
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": [
+        {
+          "$ref": "#/definitions/note"
+        }
+      ]
     },
     "sections": {
-      "type": ["array", "null"],
-      "items": [{"$ref": "#/definitions/section" }]
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": [
+        {
+          "$ref": "#/definitions/section"
+        }
+      ]
     },
     "index": {
-      "type": ["array", "null"],
-      "items": [{"$ref": "#/definitions/section" }]
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": [
+        {
+          "$ref": "#/definitions/section"
+        }
+      ]
     },
     "trainings": {
-      "type": ["array", "null"],
-      "items": [{"$ref": "#/definitions/section" }]
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": [
+        {
+          "$ref": "#/definitions/section"
+        }
+      ]
     },
     "plan": {
-      "$ref": "#/definitions/plan"
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": [
+        {
+          "$ref": "#/definitions/plan"
+        }
+      ]
     }
   },
   "required": [
-    "title", "project", "description", "sections",
-    "objects", "notes", "index", "trainings",
+    "title",
+    "project",
+    "description",
+    "sections",
+    "objects",
+    "notes",
+    "index",
+    "trainings",
     "plan"
   ]
 }

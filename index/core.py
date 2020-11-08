@@ -29,7 +29,7 @@ class Index(Document):
                 print("#######" * 7, file=f)
                 print("\n", file=f, end="")
                 for _, exercise in enumerate(self.get_exercise_training_list(total=50)):
-                    print("\t", _+1, exercise, file=f)
+                    print("\t", _ + 1, exercise, file=f)
 
     def dump_txt(self):
         today = datetime.date.today()
@@ -65,7 +65,9 @@ class Index(Document):
         if _filter is not None:
             if _filter not in training:
                 training = self.get_exercise_training(_filter)
-        return f"{'White' if random.randint(0, 1) else 'Black'}: {training}"
+        if "analyze" not in training:
+            training = f"{'White' if random.randint(0, 1) else 'Black'}: {training}"
+        return training
 
     def get_exercise_training_list(self, total: int, _filter=None, _sort=False):
         _list = []
@@ -107,9 +109,10 @@ class Index(Document):
     def sections(self):
         section_map = {}
         sections = []
-        for e in self.plan.get('sections'):
-            sections = self.get_list(e, "sections", sections)
-            section_map.__setitem__(e.get('title'), sections)
+        for plan in self.plan:
+            for e in plan.get('sections'):
+                sections = self.get_list(e, "sections", sections)
+                section_map.__setitem__(e.get('title'), sections)
         return section_map
 
     @property

@@ -61,6 +61,51 @@ objects:
 
 sections:
 
+  # promotion
+  - &KingPawnVsKing
+    title: king and pawn versus king
+    description: null
+    sections: null
+    content: null
+
+  - &KingPawnVsKingAndKnight
+    title: king and pawn versus king and knight
+    description: null
+    sections: null
+    content: null
+  - &KingPawnVsKingAndBishop
+    title: king and pawn versus king and bishop
+    description: null
+    sections: null
+    content: null
+  - &KingPawnVsKingAndQueen
+    title: king and pawn versus king and queen
+    description: null
+    sections: null
+    content: null
+
+  # analysis
+  - &AnalyzeYourSelfSection
+    title: analyze your chess games
+    description: null
+    sections: null
+    content: null
+  - &AnalyzeBeginnerSection
+    title: analyze beginner chess games
+    description: null
+    sections: null
+    content: null
+  - &AnalyzeClassicSection
+    title: analyze classic chess games
+    description: null
+    sections: null
+    content: null
+  - &AnalyzeGMSection
+    title: analyze current GM games
+    description: null
+    sections: null
+    content: null
+
   # fights
   - &QueenVsBishopSection
     title: queen vs bishop
@@ -195,12 +240,32 @@ sections:
       - *BishopVsPawnSection
     content: null
 
+  - &PawnPromotionSection
+    title: pieces fight versus pawn
+    description: null
+    root: true
+    sections:
+      - *KingPawnVsKing
+      - *KingPawnVsKingAndKnight
+      - *KingPawnVsKingAndBishop
+      - *KingPawnVsKingAndQueen
+    content: null
+
 index:
+
+  # Chess Endings: essential knowledge (Y.Averbakh)
   - *IntroductionSection
   - *PiecesCapacitySection
   - *CheckmateKingOnlySection
   - *PiecesFightSection
   - *PiecesFightPawnSection
+  - *PawnPromotionSection
+
+  # Yourself analysis
+  - *AnalyzeYourSelfSection
+  - *AnalyzeBeginnerSection
+  - *AnalyzeClassicSection
+  - *AnalyzeGMSection
 
 trainings:
   - &EndgameTraining
@@ -211,6 +276,18 @@ trainings:
       - *CheckmateKingOnlySection
       - *PiecesFightSection
       - *PiecesFightPawnSection
+      - *PawnPromotionSection
+    content: null
+
+  - &ChessGameAnalyzeTraining
+    title: chess games analyze training
+    root: true
+    description: improve basic concepts of middlegame strategy
+    sections:
+      - *AnalyzeYourSelfSection
+      - *AnalyzeBeginnerSection
+      - *AnalyzeClassicSection
+      - *AnalyzeGMSection
     content: null
 
 plans:
@@ -225,6 +302,17 @@ plans:
       - *EndgameTraining
     content: null
 
-plan:
-  *EndgamePlan
+  - &ChessGameAnalyzePlan
+    name: ChessGameAnalyzePlan
+    description: analyze chess games
+    objective: increase foundamental concepts
+    type: every 2 weeks
+    due: 01-09-2020
+    exam: true
+    sections:
+      - *ChessGameAnalyzeTraining
+    content: null
 
+plan:
+  - *EndgamePlan
+  - *ChessGameAnalyzePlan
